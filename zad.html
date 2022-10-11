@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            <select>
+            </select>
+        </div>
+        <p></p>
+        <script>
+            const sel = document.querySelector('select');
+            const dzis = new Date();
+            const p = document.querySelector('p');
+            const d = [
+                {
+                    data: new Date(2022,9,14),
+                    nazwa: "dzien nauczyciela",
+                },
+                {
+                    data: new Date(2022,9,31),
+                    nazwa: "Hallowen",
+                },
+                {
+                    data: new Date(2022,10,01),
+                    nazwa: "W_S",
+                },
+                {
+                    data: new Date(2020,10,01),
+                    nazwa: "W_S_stare",
+                }
+            ];
+            d.forEach((elem)=>{
+                const op = document.createElement('option');
+                sel.appendChild(op);
+                op.innerHTML = elem.nazwa;
+                op.addEventListener("click", function(){
+                    const wynik2 = parseInt((elem.data - dzis) / (1000*60*60*24));
+                    console.log(wynik2);
+                    if(wynik2>0){
+                        p.innerHTML= "Do świeta zostało " + wynik2;
+                    }if(wynik2<0){
+                        p.innerHTML= "Swieto mineło " + wynik2;
+                    }
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
